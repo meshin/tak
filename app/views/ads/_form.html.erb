@@ -1,0 +1,18 @@
+<%= form_for @ad do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <%= f.fields_for :images do |builder| %>
+    <p>
+      <%= builder.label :position %><br />
+      <%= builder.text_field :position %>
+    </p>
+    <p>
+     <%= builder.label :file %><br />
+     <%= builder.file_field :file %>
+    </p>
+  <% end %>
+  <p><%= f.submit %></p>
+<% end %>

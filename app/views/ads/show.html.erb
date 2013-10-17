@@ -1,0 +1,18 @@
+<% title "Ad" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ad.name %>
+</p>
+<p>
+  <strong>Images:</strong><br />
+  <% @ad.images.each do |image|%>
+    <%= image.file.url %><br />
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_ad_path(@ad) %> |
+  <%= link_to "Destroy", @ad, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", ads_path %>
+</p>

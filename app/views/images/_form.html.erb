@@ -1,0 +1,16 @@
+<%= form_for @image do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :position %><br />
+    <%= f.number_field :position %>
+  </p>
+  <p>
+    <%= f.label :file %><br />
+    <%= f.text_field :file %>
+  </p>
+  <p>
+    <%= f.label :ad_id %><br />
+    <%= f.number_field :ad_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
