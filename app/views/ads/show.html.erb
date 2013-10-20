@@ -1,18 +1,24 @@
-<% title "Ad" %>
+<%- model_class = @ad.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @ad.name %>
-</p>
-<p>
-  <strong>Images:</strong><br />
-  <% @ad.images.each do |image|%>
-    <%= image.file.url %><br />
-  <% end %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @ad.name %></dd>
+  <% @ad.images.each do |image| %>
+    <dd><%= image.file.url %></dd>
+  <%end%>
+</dl>
 
-<p>
-  <%= link_to "Edit", edit_ad_path(@ad) %> |
-  <%= link_to "Destroy", @ad, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", ads_path %>
-</p>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              ads_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ad_path(@ad), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              ad_path(@ad),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>
