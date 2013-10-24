@@ -1,16 +1,23 @@
-<%= form_for @image do |f| %>
-  <%= f.error_messages %>
+<%= form_for @image, :html => {:multipart => true} do |f| %>
   <p>
     <%= f.label :position %><br />
     <%= f.number_field :position %>
   </p>
   <p>
-    <%= f.label :file %><br />
-    <%= f.file_field :file %>
-  </p>
-  <p>
     <%= f.label :ad_id %><br />
     <%= f.number_field :ad_id %>
+  </p>
+  <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width %>
+  </p>
+  <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </p>
+  <p>
+    <%= f.label :file %><br />
+    <%= f.file_field :file %>
   </p>
   <p><%= f.submit %></p>
 <% end %>

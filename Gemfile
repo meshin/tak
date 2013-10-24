@@ -7,8 +7,8 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 gem 'carrierwave'
-gem "rmagick", "~> 2.13.2"
-gem "carrierwave-meta", "~> 0.0.5"
+gem "mini_magick"
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.

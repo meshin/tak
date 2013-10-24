@@ -2,12 +2,11 @@
 
 <p>
   <strong>Position:</strong>
-  <%= @image.position %>
+  <%= @image.id %>
 </p>
 <p>
   <strong>File:</strong>
-  <%= @image.file.url %><br />
-  <%= image_tag @image.file.crop_source.crop.url %>
+  <%= image_tag @image.file.crop.url %><br />
 </p>
 <p>
   <strong>Ad:</strong>

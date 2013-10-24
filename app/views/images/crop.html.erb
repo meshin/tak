@@ -1,0 +1,40 @@
+<h1>Crop image</h1>
+
+		<script type="text/javascript">
+
+			jQuery(document).ready(function(){
+
+				jQuery('#cropbox').Jcrop({
+					onChange: showCoords,
+					onSelect: showCoords
+				});
+
+			});
+
+			// Simple event handler, called from onChange and onSelect
+			// event handlers, as per the Jcrop invocation above
+			function showCoords(c)
+			{
+				jQuery('#x').val(c.x);
+				jQuery('#y').val(c.y);
+				jQuery('#w').val(c.w);
+				jQuery('#h').val(c.h);
+			};
+
+		</script>
+
+<%= image_tag @image.file.url, :id => "cropbox" %>
+<br /><br />
+<%= form_for @image, :url => { :action => "cropit" } do |f| %>
+  <%= f.error_messages %>
+    <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width, :id => 'w' %>
+  </p>
+    <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height, :id => 'h' %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>
