@@ -2,6 +2,19 @@ class ImagesController < ApplicationController
   def index
     @images = Image.all
   end
+  
+  def crop
+    @image = Image.find(params[:id])
+  end
+  
+  def cropit
+    @image = Image.find(params[:id])
+    if @image.save
+      redirect_to @image, :notice  => "Successfully updated image."
+    else
+      render :action => 'crop'
+    end
+  end
 
   def show
     @image = Image.find(params[:id])

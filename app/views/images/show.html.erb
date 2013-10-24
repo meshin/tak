@@ -6,7 +6,8 @@
 </p>
 <p>
   <strong>File:</strong>
-  <%= @image.file %>
+  <%= @image.file.url %><br />
+  <%= image_tag @image.file.crop_source.crop.url %>
 </p>
 <p>
   <strong>Ad:</strong>
