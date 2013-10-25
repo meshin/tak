@@ -1,8 +1,50 @@
-<% title "Edit Image" %>
+<h1>Crop image</h1>
 
-<%= render 'form' %>
+		<script type="text/javascript">
 
-<p>
-  <%= link_to "Show", @image %> |
-  <%= link_to "View All", images_path %>
-</p>
+			jQuery(document).ready(function(){
+
+				jQuery('#cropbox').Jcrop({
+					onChange: showCoords,
+					onSelect: showCoords
+				});
+
+			});
+
+			// Simple event handler, called from onChange and onSelect
+			// event handlers, as per the Jcrop invocation above
+			function showCoords(c)
+			{
+				jQuery('#x').val(c.x);
+				jQuery('#y').val(c.y);
+				jQuery('#w').val(c.w);
+				jQuery('#h').val(c.h);
+			};
+
+		</script>
+
+<%= image_tag @image.file.url, :id => "cropbox" %>
+<br /><br />
+<%= form_for @image, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+<h2>Dimensions</h2>
+    <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width, :id => 'w' %>
+  </p>
+    <p>
+    <%= f.label :height %><br />
+    <%= f.text_field :height, :id => 'h' %>
+  </p>
+<h2>Crop area</h2>
+  <p>
+    <%= f.label :crop_x %><br />
+    <%= f.text_field :crop_x, :id => 'x' %>
+  </p>
+    <p>
+    <%= f.label :crop_y %><br />
+    <%= f.text_field :crop_y, :id => 'y' %>
+  </p>
+
+  <p><%= f.submit %></p>
+<% end %>

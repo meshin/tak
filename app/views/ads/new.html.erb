@@ -4,3 +4,8 @@
                                  :default => "New #{model_class.model_name.human}") %></h1>
 </div>
 <%= render :partial => 'form' %>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $('input[type=file]').bootstrapFileInput();
+  });
+</script>

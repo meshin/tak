@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
-  attr_accessor :width, :height
-  attr_accessible :position, :file, :ad_id, :remote_file_url, :width, :height
+  attr_accessor :width, :height, :crop_x, :crop_y
+  attr_accessible :position, :file, :ad_id, :remote_file_url, :width, :height, :crop_x, :crop_y
   
   after_update :reprocess_image
   
