@@ -37,5 +37,10 @@
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $('input[type=file]').bootstrapFileInput();
+      });
+    </script>
   </body>
 </html>

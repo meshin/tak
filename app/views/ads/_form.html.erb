@@ -6,19 +6,19 @@
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
-  
+  <% n = 0 %>
   <div class="control-group">
   <%= f.fields_for :images do |i| %>
     
-      <%= i.label "Logo", :class => 'control-label' %>
       <div class="controls">
-        <%= i.text_field :position, :class => 'text_field' %>
+        <%= i.hidden_field :position, :value => n, :class => 'text_field' %>
       </div>
       
       <%= i.label :file, :class => 'control-label' %>
       <div class="controls">
         <%= i.file_field :file, :class => 'file_field' %>
       </div>
+      <% n = n+1 %>
     <% end %>
   </div>
 
