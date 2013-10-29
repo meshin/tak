@@ -10,11 +10,12 @@ class AdsController < ApplicationController
   def new
     @ad = Ad.new
     4.times{ @ad.images.build }
+    #@ad.images.build
+    #@ad.images = []
   end
 
   def create
     @ad = Ad.new(params[:ad])
-    @images = Image.create(params[:images])
     if @ad.save
       redirect_to @ad, :notice => "Successfully created ad."
     else
