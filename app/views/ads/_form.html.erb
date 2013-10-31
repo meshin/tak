@@ -18,14 +18,92 @@
       <div class="controls">
         <%= i.file_field :file, :class => 'file_field' %>
       </div>
-      
-      
-      
-      
+
       <% n = n+1 %>
     <% end %>
   </div>
 
+  <div class="control-group">
+    <%= f.label "Header", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :link, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label "Oglas 1", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title_1, :class => 'text_field' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :text_1, :class => 'text_field' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :link_1, :class => 'text_field' %>
+    </div>
+  </div>
+  
+    <div class="control-group">
+    <%= f.label "Oglas 2", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title_2, :class => 'text_field' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :text_2, :class => 'text_field' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :link_2, :class => 'text_field' %>
+    </div>
+  </div>
+  
+    <div class="control-group">
+    <%= f.label "Oglas 3", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title_3, :class => 'text_field' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :text_3, :class => 'text_field' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :link_3, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <h3>Colours</h3>
+    <div class="control-group">
+    <%= f.label "Pozadina", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :colour_bg, :class => 'text_field color' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :colour_bg_hover, :class => 'text_field color' %>
+    </div>
+    </div>
+    <div class="control-group">
+    <%= f.label "Link", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :colour_link, :class => 'text_field color' %>
+    </div>
+    <div class="controls">
+      <%= f.text_field :colour_link_hover, :class => 'text_field color' %>
+    </div>
+    </div>
+    <div class="control-group">
+    <%= f.label "Text", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :colour_text, :class => 'text_field color' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label "Border", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :colour_border, :class => 'text_field color' %>
+    </div>
+  </div>
+  
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

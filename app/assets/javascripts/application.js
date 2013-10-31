@@ -16,4 +16,5 @@
 //= require_tree .
 //= require jquery.Jcrop.min
 //= bootstrap.file-input
+//= jscolor/jscolor
 

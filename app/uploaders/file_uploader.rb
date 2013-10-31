@@ -28,7 +28,7 @@ class FileUploader < CarrierWave::Uploader::Base
         x = model.crop_x
         y = model.crop_y
         img.crop("#{w}x#{h}+#{x}+#{y}")
-        img.resize("150x150!")
+        img.resize("78x52!")
       end
       img = yield(img) if block_given?
       img

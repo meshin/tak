@@ -6,10 +6,83 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @ad.name %></dd>
-  <% @ad.images.each do |image| %>
-    <dd><%= image.file.url %></dd>
-  <%end%>
+
 </dl>
+
+<script>
+	if(typeof(text_ad)=='undefined'){
+		var text_ad = new Array();
+	}
+
+	(function(){
+		var $ = jQuery;
+		var i = text_ad.length;
+		o = text_ad[i] = {
+	   href: '<%= @ad.link %>',
+			img:   	'',
+			text: '<%= @ad.title %>',
+			items:
+			[
+				{
+					href:  '<%= @ad.link_1 %>',
+					img:   '<%= @ad.images.second.file.crop.url %>',
+					title: '<%= @ad.title_1 %>',
+					text:  '<%= @ad.text_1 %>'
+				},
+				{
+					href:  '<%= @ad.link_2 %>',
+					img:   '<%= @ad.images.third.file.crop.url %>',
+					title: '<%= @ad.title_2 %>',
+					text:  '<%= @ad.text_2 %>'
+				},
+				{
+					href:  '<%= @ad.link_3 %>',
+					img:   '<%= @ad.images.last.file.crop.url %>',
+					title: '<%= @ad.title_3 %>',
+					text:  '<%= @ad.text_3%>'
+				}
+			],
+			colors: {
+				h3_link:  '<%= @ad.colour_link %>',
+				h3_hover: '<%= @ad.colour_link_hover %>',
+				p_link:   '<%= @ad.colour_text %>',
+				p_hover:  '<%= @ad.colour_text %>',
+				bg_link:  '<%= @ad.colour_bg %>',
+				bg_hover: '<%= @ad.colour_bg_hover %>',
+				border:   '<%= @ad.colour_border %>'
+			}
+		};
+
+		var header = $('<div class="header"><a href="'+o.href+'" target="_blank" title="'+o.text+'"><img s'+'rc="'+o.img+'" alt="'+o.text+'" /></a></div>');
+		var body = $('<div class="body"></div>');
+		
+		// body.append('<a href="'+o.href+'" target="_blank" title="'+o.text+'"><p>'+o.extra+'</p><div style="clear:both"></div></a>');
+		
+		for(var k=0; k<o.items.length; k++){
+			body.append('<a href="'+o.items[k].href+'" target="_blank" title="'+o.items[k].title+'"><img s'+'rc="'+o.items[k].img+'" alt="'+o.items[k].title+'" /><h3>'+o.items[k].title+'</h3><p>'+o.items[k].text+'</p><div style="clear:both"></div></a>');
+		}
+		var footer = $('<div class="footer"><a href="mailto:online.sales@novatv.hr ">Dodaj svoj oglas!</a></div>');
+
+		var style = '<style>';
+		style += '#text_ad_'+i+'.text_ad_2 a:link h3, #text_ad_'+i+'.text_ad_2 a:visited h3{ color: '+o.colors.h3_link+'; }';
+		style += '#text_ad_'+i+'.text_ad_2 a:hover h3, #text_ad_'+i+'.text_ad_2 a:active h3{ color: '+o.colors.h3_hover+'; }';
+		style += '#text_ad_'+i+'.text_ad_2 a:link p, #text_ad_'+i+'.text_ad_2 a:visited p{ color: '+o.colors.p_link+'; }';
+		style += '#text_ad_'+i+'.text_ad_2 a:hover p, #text_ad_'+i+'.text_ad_2 a:active p{ color: '+o.colors.p_hover+'; }';
+		style += '#text_ad_'+i+'.text_ad_2 .body a:link, #text_ad_'+i+'.text_ad_2 .body a:visited{ background: '+o.colors.bg_link+'; }';
+		style += '#text_ad_'+i+'.text_ad_2 .body a:hover, #text_ad_'+i+'.text_ad_2 .body a:active{ background: '+o.colors.bg_hover+'; }';
+		style += '.text_ad_2{margin: 0 auto 8px; position: relative; width: 300px; background: #f8f8f8; font-family: arial; font-size: 12px; line-height: 15px; border: 3px solid '+o.colors.border+'; } .text_ad_2 h3 { font-weight:bold; line-height: 15px; font-size:14px; margin: 0; padding: 0; }  .text_ad_2 h3, .text_ad_2 p{ margin: 0; padding: 0; line-height: 15px; font-size:12px; }  .text_ad_2 a{ display: block; text-decoration: none; }  .text_ad_2 .header a{ padding: 0px 0px 5px 0px; }  .text_ad_2 .body a{ padding: 5px 5px 10px 5px; } .text_ad_2 .body img{ padding: 0px 5px 0px 0px; float: left; } .text_ad_2 .header{ background: #FFF; } .text_ad_2 .footer{ clear: both; text-align: right; background: #FFF; padding: 3px; }';
+		style += '.text_ad_2 .footer a:link, .text_ad_2 .footer a:visited{ color: #666; }';
+		style += '.text_ad_2 .footer a:hover, .text_ad_2 .footer a:active{ color: #000; }';
+		style += '#text_ad_'+i+'.text_ad_2 .textAdExtra{ font-weight: bold; color:#CC0000; margin-left:83px }';
+		style += '</style>';
+
+		document.write('<div id="text_ad_'+i+'" class="text_ad_2"></div>'+style);
+
+		$(function(){
+			$('#text_ad_'+i).html('').append(header).append(body).append(footer);
+		});
+	})();
+</script>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

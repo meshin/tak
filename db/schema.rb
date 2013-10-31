@@ -11,12 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016185339) do
+ActiveRecord::Schema.define(:version => 20131031103134) do
 
   create_table "ads", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "title"
+    t.string   "link"
+    t.string   "title_1"
+    t.string   "title_2"
+    t.string   "title_3"
+    t.string   "text_1"
+    t.string   "text_2"
+    t.string   "text_3"
+    t.string   "link_1"
+    t.string   "link_2"
+    t.string   "link_3"
+    t.string   "colour_bg"
+    t.string   "colour_bg_hover"
+    t.string   "colour_link"
+    t.string   "colour_link_hover"
+    t.string   "colour_border"
+    t.string   "colour_text"
   end
 
   create_table "images", :force => true do |t|
