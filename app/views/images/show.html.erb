@@ -5,7 +5,11 @@
   <%= @image.id %>
 </p>
 <p>
-  <strong>File:</strong>
+  <strong>Header:</strong>
+  <%= image_tag @image.file.header.url %><br />
+</p>
+<p>
+  <strong>Croped:</strong>
   <%= image_tag @image.file.crop.url %><br />
 </p>
 <p>

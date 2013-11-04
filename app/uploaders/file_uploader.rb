@@ -20,6 +20,11 @@ class FileUploader < CarrierWave::Uploader::Base
     process :crop_area
   end
   
+  version :header do
+    process :header_area
+  end
+
+  
    def crop_area
     manipulate! do |img|
       unless model.width.nil?
@@ -28,8 +33,23 @@ class FileUploader < CarrierWave::Uploader::Base
         x = model.crop_x
         y = model.crop_y
         img.crop("#{w}x#{h}+#{x}+#{y}")
-        img.resize("78x52!")
       end
+      img.resize("78x52!")
+      img = yield(img) if block_given?
+      img
+    end
+  end
+  
+  def header_area
+    manipulate! do |img|
+      unless model.width.nil?
+        w = model.width
+        h = model.height
+        x = model.crop_x
+        y = model.crop_y
+        img.crop("#{w}x#{h}+#{x}+#{y}")
+      end
+      img.resize("300x32!")
       img = yield(img) if block_given?
       img
     end

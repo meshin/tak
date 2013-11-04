@@ -1,20 +1,21 @@
 <%= form_for @ad, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages %>
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
+    <%= f.label "Naziv", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
   <% n = 0 %>
   <div class="control-group">
+  <h3>Slike</h3>
   <%= f.fields_for :images do |i| %>
     
       <div class="controls">
         <%= i.hidden_field :position, :value => n, :class => 'text_field' %>
       </div>
       
-      <%= i.label :file, :class => 'control-label' %>
+      <%= i.label (n==0 ? "Header" : "Oglas #{n}"), :class => 'control-label' %>
       <div class="controls">
         <%= i.file_field :file, :class => 'file_field' %>
       </div>
@@ -22,62 +23,73 @@
       <% n = n+1 %>
     <% end %>
   </div>
-
+  <h3>Naslov oglasa</h3>
   <div class="control-group">
-    <%= f.label "Header", :class => 'control-label' %>
+    <%= f.label "Naslov", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title, :class => 'text_field' %>
     </div>
+    <%= f.label "Link naslova", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :link, :class => 'text_field' %>
     </div>
   </div>
   
+  <h3>1. oglas</h3>
   <div class="control-group">
-    <%= f.label "Oglas 1", :class => 'control-label' %>
+    <%= f.label "Naslov oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title_1, :class => 'text_field' %>
     </div>
+    <%= f.label "Tekst oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :text_1, :class => 'text_field' %>
     </div>
+    <%= f.label "Link oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :link_1, :class => 'text_field' %>
     </div>
   </div>
   
+  <h3>2. oglas</h3>
     <div class="control-group">
-    <%= f.label "Oglas 2", :class => 'control-label' %>
+    <%= f.label "Naslov oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title_2, :class => 'text_field' %>
     </div>
+    <%= f.label "Tekst oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :text_2, :class => 'text_field' %>
     </div>
+    <%= f.label "Link oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :link_2, :class => 'text_field' %>
     </div>
   </div>
   
+  <h3>3. oglas</h3>
     <div class="control-group">
-    <%= f.label "Oglas 3", :class => 'control-label' %>
+    <%= f.label "Naslov oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title_3, :class => 'text_field' %>
     </div>
+    <%= f.label "Tekst oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :text_3, :class => 'text_field' %>
     </div>
+    <%= f.label "Link oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :link_3, :class => 'text_field' %>
     </div>
   </div>
   
-  <h3>Colours</h3>
+  <h3>Boje oglasa</h3>
     <div class="control-group">
     <%= f.label "Pozadina", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :colour_bg, :class => 'text_field color' %>
     </div>
+    <%= f.label "Mouseover", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :colour_bg_hover, :class => 'text_field color' %>
     </div>
@@ -87,6 +99,7 @@
     <div class="controls">
       <%= f.text_field :colour_link, :class => 'text_field color' %>
     </div>
+    <%= f.label "Mouseover", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :colour_link_hover, :class => 'text_field color' %>
     </div>

@@ -19,7 +19,7 @@
 		var i = text_ad.length;
 		o = text_ad[i] = {
 	   href: '<%= @ad.link %>',
-			img:   	'',
+			img:   	'<%= @ad.images.first.file.header.url %>',
 			text: '<%= @ad.title %>',
 			items:
 			[
@@ -43,13 +43,13 @@
 				}
 			],
 			colors: {
-				h3_link:  '<%= @ad.colour_link %>',
-				h3_hover: '<%= @ad.colour_link_hover %>',
-				p_link:   '<%= @ad.colour_text %>',
-				p_hover:  '<%= @ad.colour_text %>',
-				bg_link:  '<%= @ad.colour_bg %>',
-				bg_hover: '<%= @ad.colour_bg_hover %>',
-				border:   '<%= @ad.colour_border %>'
+				h3_link:  '#<%= @ad.colour_link %>',
+				h3_hover: '#<%= @ad.colour_link_hover %>',
+				p_link:   '#<%= @ad.colour_text %>',
+				p_hover:  '#<%= @ad.colour_text %>',
+				bg_link:  '#<%= @ad.colour_bg %>',
+				bg_hover: '#<%= @ad.colour_bg_hover %>',
+				border:   '#<%= @ad.colour_border %>'
 			}
 		};
 
