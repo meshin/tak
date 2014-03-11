@@ -17,4 +17,5 @@
 //= require jquery.Jcrop.min
 //= bootstrap.file-input
 //= jscolor/jscolor
+//= require nested_form
 

@@ -9,9 +9,8 @@ class AdsController < ApplicationController
 
   def new
     @ad = Ad.new
-    4.times{ @ad.images.build }
     #@ad.images.build
-    #@ad.images = []
+    #4.times{ @ad.images.build }
   end
 
   def create

@@ -70,6 +70,7 @@ GEM
     mocha (0.12.4)
       metaclass (~> 0.0.1)
     multi_json (1.8.2)
+    nested_form (0.3.2)
     nifty-generators (0.4.6)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -139,6 +140,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mocha
+  nested_form
   nifty-generators
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)

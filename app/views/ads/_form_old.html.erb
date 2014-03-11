@@ -1,4 +1,4 @@
-<%= nested_form_for @ad, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+<%= form_for @ad, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages %>
   <div class="control-group">
     <%= f.label "Naziv", :class => 'control-label' %>
@@ -6,7 +6,23 @@
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
+  <% n = 0 %>
+  <div class="control-group">
+  <h3>Slike</h3>
+  <%= f.fields_for :images do |i| %>
+    
+      <div class="controls">
+        <%= i.hidden_field :position, :value => n, :class => 'text_field' %>
+      </div>
+      
+      <%= i.label (n==0 ? "Header" : "Oglas #{n}"), :class => 'control-label' %>
+      <div class="controls">
+        <%= i.file_field :file, :class => 'file_field' %>
+      </div>
 
+      <% n = n+1 %>
+    <% end %>
+  </div>
   <h3>Naslov oglasa</h3>
   <div class="control-group">
     <%= f.label "Naslov", :class => 'control-label' %>
@@ -17,51 +33,55 @@
     <div class="controls">
       <%= f.text_field :link, :class => 'text_field' %>
     </div>
-    <% f.fields_for :images do |q| %>
-      
-        <div class="controls">
-          <%= q.hidden_field :position, :value => 0, :class => 'text_field' %>
-        </div>
-        
-        <%= q.label 'Header slika', :class => 'control-label' %>
-        <div class="controls">
-          <%= q.file_field :file, :class => 'file_field' %>
-        </div>
-
-      <% end %>
-    </div>
- 
-
-  
-  <h3>Dodaj oglase</h3>
-  <div class="control-group">
-  <%= f.fields_for :items do |i| %>
-    
-    <%= i.label "Naslov oglasa", :class => 'control-label' %>
-    <div class="controls">
-      <%= i.text_field :title, :class => 'text_field' %>
-    </div>
-    <%= i.label "Tekst oglasa", :class => 'control-label' %>
-    <div class="controls">
-      <%= i.text_field :content, :class => 'text_field' %>
-    </div>
-    <%= i.label "Link oglasa", :class => 'control-label' %>
-    <div class="controls">
-      <%= i.text_field :link, :class => 'text_field' %>
-    </div>
-
-    <%= i.fields_for :images do |n| %>
-      <%= n.label "Slika", :class => 'control-label' %>
-      <div class="controls">
-        <%= n.file_field :file, :class => 'file_field' %>
-      </div>
-    <% end %>
-
-      <%= i.link_to_remove "Cancel" %>
-    <% end %>
-  <%= f.link_to_add "Dodaj novi oglas", :items, :class => 'btn btn-primary' %>
   </div>
-
+  
+  <h3>1. oglas</h3>
+  <div class="control-group">
+    <%= f.label "Naslov oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title_1, :class => 'text_field' %>
+    </div>
+    <%= f.label "Tekst oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :text_1, :class => 'text_field' %>
+    </div>
+    <%= f.label "Link oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :link_1, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <h3>2. oglas</h3>
+    <div class="control-group">
+    <%= f.label "Naslov oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title_2, :class => 'text_field' %>
+    </div>
+    <%= f.label "Tekst oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :text_2, :class => 'text_field' %>
+    </div>
+    <%= f.label "Link oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :link_2, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <h3>3. oglas</h3>
+    <div class="control-group">
+    <%= f.label "Naslov oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title_3, :class => 'text_field' %>
+    </div>
+    <%= f.label "Tekst oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :text_3, :class => 'text_field' %>
+    </div>
+    <%= f.label "Link oglasa", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :link_3, :class => 'text_field' %>
+    </div>
+  </div>
   
   <h3>Boje oglasa</h3>
     <div class="control-group">
@@ -103,4 +123,3 @@
                 ads_path, :class => 'btn' %>
   </div>
 <% end %>
-
