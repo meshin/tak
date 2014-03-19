@@ -12,24 +12,14 @@
 			text: '<%= @ad.title %>',
 			items:
 			[
+			<% @ad.items.each do |item| %>
 				{
-					href:  '<%= @ad.link_1 %>',
-					img:   '<%= @ad.images.second.file.crop.url %>',
-					title: '<%= @ad.title_1 %>',
-					text:  '<%= @ad.text_1 %>'
+					href:  '<%= item.link %>',
+					img:   '<%= item.file.crop.url %>',
+					title: '<%= item.title %>',
+					text:  '<%= item.content %>'
 				},
-				{
-					href:  '<%= @ad.link_2 %>',
-					img:   '<%= @ad.images.third.file.crop.url %>',
-					title: '<%= @ad.title_2 %>',
-					text:  '<%= @ad.text_2 %>'
-				},
-				{
-					href:  '<%= @ad.link_3 %>',
-					img:   '<%= @ad.images.last.file.crop.url %>',
-					title: '<%= @ad.title_3 %>',
-					text:  '<%= @ad.text_3%>'
-				}
+			<% end %>
 			],
 			colors: {
 				h3_link:  '#<%= @ad.colour_link %>',

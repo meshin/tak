@@ -11,6 +11,9 @@ Tak::Application.routes.draw do
   # Sample of regular route:
   match 'images/:id/crop' => 'images#crop'
   match 'images/:id/cropit' => 'images#cropit'
+
+  match 'items/:id/crop' => 'items#crop'
+  match 'items/:id/cropit' => 'items#cropit'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

@@ -3,6 +3,19 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def crop
+    @item = Item.find(params[:id])
+  end
+  
+  def cropit
+    @item = Item.find(params[:id])
+    if @item.save
+      redirect_to '/', :notice  => "Successfully updated Item."
+    else
+      render :action => 'crop'
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
   end

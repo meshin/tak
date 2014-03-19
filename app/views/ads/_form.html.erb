@@ -17,26 +17,23 @@
     <div class="controls">
       <%= f.text_field :link, :class => 'text_field' %>
     </div>
-    <% f.fields_for :images do |q| %>
-      
-        <div class="controls">
-          <%= q.hidden_field :position, :value => 0, :class => 'text_field' %>
-        </div>
-        
-        <%= q.label 'Header slika', :class => 'control-label' %>
-        <div class="controls">
-          <%= q.file_field :file, :class => 'file_field' %>
-        </div>
-
-      <% end %>
-    </div>
+  </div>
  
+   <%= f.fields_for :images do |img| %>
+      <%= img.label "Slika", :class => 'control-label' %>
+      <div class="controls">
+        <%= img.file_field :file, :class => 'file_field' %>
+      </div>
+      <div class="controls">
+        <%= img.hidden_field :position, :value => 0, :class => 'text_field' %>
+      </div>
+    <% end %>
 
   
   <h3>Dodaj oglase</h3>
   <div class="control-group">
   <%= f.fields_for :items do |i| %>
-    
+
     <%= i.label "Naslov oglasa", :class => 'control-label' %>
     <div class="controls">
       <%= i.text_field :title, :class => 'text_field' %>
@@ -50,18 +47,16 @@
       <%= i.text_field :link, :class => 'text_field' %>
     </div>
 
-    <%= i.fields_for :images do |n| %>
-      <%= n.label "Slika", :class => 'control-label' %>
+      <%= i.label "Slika", :class => 'control-label' %>
       <div class="controls">
-        <%= n.file_field :file, :class => 'file_field' %>
+        <%= i.file_field :file, :class => 'file_field' %>
       </div>
-    <% end %>
 
-      <%= i.link_to_remove "Cancel" %>
+      <%= i.link_to_remove "Cancel", :class => 'btn'%>
+      <br />
     <% end %>
   <%= f.link_to_add "Dodaj novi oglas", :items, :class => 'btn btn-primary' %>
   </div>
-
   
   <h3>Boje oglasa</h3>
     <div class="control-group">

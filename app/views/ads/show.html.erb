@@ -12,6 +12,19 @@
 <%= render :partial => 'ad_code'%>
 
 <div class="form-actions">
+  <%= link_to t('.edit photo', :default => t("helpers.links.edit header photo")),
+              edit_image_path(@ad.images.first), :class => 'btn'  %><br />
+
+
+  <% @ad.items.each_with_index do |item| %>
+
+    <%= link_to t('.edit', :default => t("helpers.links.edit ad image")),
+              "/items/#{item.id}/crop", :class => 'btn' %><br />
+
+  <% end %>
+</div>
+
+<div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               ads_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),

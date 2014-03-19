@@ -1,9 +1,16 @@
 class Item < ActiveRecord::Base
-  attr_accessible :title, :content, :link, :images_attributes, :ad_id
+  attr_accessor :width, :height, :crop_x, :crop_y
+  attr_accessible :title, :content, :link, :ad_id, :file, :width, :height, :crop_x, :crop_y
 
-  has_many :images, :dependent=>:destroy
-  belongs_to :ads
+  belongs_to :ad
 
-  accepts_nested_attributes_for :images
+  after_update :reprocess_image
+  
+  mount_uploader :file, FileUploader
+  
+  
+  def reprocess_image
+    self.file.recreate_versions!
+  end
 
 end
